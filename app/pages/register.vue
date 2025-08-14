@@ -2,7 +2,7 @@
   <div class = "flex bg-black h h-screen">
 
   
-    <div class="bg-zinc-900 w-[516px] rounded-xl shadow-lg flex flex-col items-center py-10 px-8">
+    <div class="bg-zinc-900 w-[516px] rounded-xl shadow-lg flex flex-col justify-center py-10 px-8">
       <Logo class="mb-8" />
       <h1 class="text-white font-extrabold text-2xl mb-2 tracking-tight">Sign up for a free account</h1>
       <p class="text-zinc-300 text-sm mb-6">Already registered?
