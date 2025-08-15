@@ -9,16 +9,16 @@
         <NuxtLink to="/login" class="font-bold text-[#FFAC00] underline hover:text-amber-400 transition-colors">Log in</NuxtLink> to your account
       </p>
 
-      <form class="w-full space-y-8">
+      <form class="w-full space-y-8" @submit.prevent="submit">
         <div>
           <label for="email" class="block text-zinc-300 text-sm mb-2">Email Address</label>
-          <input id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"
+          <input v-model="email" id="email" name="email" type="email" autocomplete="email" required placeholder="you@example.com"
             class="block w-full bg-zinc-800 border border-zinc-700 focus:border-[#FFAC00] focus:ring-2 focus:ring-[#FFAC00]/30 rounded-md px-4 py-2 placeholder:text-zinc-500 text-sm text-white transition-all duration-150 outline-none" />
         </div>
 
         <div>
           <label for="password" class="block text-zinc-300 text-sm mb-2">Password</label>
-          <input id="password" name="password" type="password" autocomplete="new-password" required placeholder="*************"
+          <input v-model="password" id="password" name="password" type="password" autocomplete="new-password" required placeholder="*************"
             class="block w-full bg-zinc-800 border border-zinc-700 focus:border-[#FFAC00] focus:ring-2 focus:ring-[#FFAC00]/30 rounded-md px-4 py-2 placeholder:text-zinc-500 text-sm text-white transition-all duration-150 outline-none" />
         </div>
 
@@ -101,3 +101,22 @@
     </div>
   </div>
 </template>
+
+<script setup>
+import { ref } from 'vue';
+
+const email = ref("");
+const password = ref("");
+ async function submit() {
+  console.log(email.value);
+  console.log(password.value);
+
+  const response = await $fetch('/api/user', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ email: email.value, password: password.value })
+  })
+ }
+</script>
